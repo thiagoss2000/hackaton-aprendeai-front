@@ -63,8 +63,6 @@ export default function MainPage() {
                 >
                   <img src={theme.image} alt={theme.name}></img>
                   <h3>{theme.name}</h3>
-                  <p>R${(theme.price).toFixed(2)}</p>
-                  <p>{theme.description}</p>
                 </Theme>
               )
           })}
