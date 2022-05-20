@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+
+    --theme: #E66720;
+    --theme-light: #EE922F;
+    --error: #ff2828;
+    --red: #bf0000;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Saira Stencil One', cursive; */
+}
