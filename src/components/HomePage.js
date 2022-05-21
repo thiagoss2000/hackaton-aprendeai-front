@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import axios from "axios"
+import { useEffect, useState, useContext } from "react";
+import { AuthProvider } from "./context";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { Main, Theme } from "../assets/mainStyled"
 
 import userImg from "../icons/user.png"
 
+
 export default function HomePage() {
-  const URL = "http://localhost:5000"
-  
+  const { setCategorie} = useContext(AuthProvider);
+
   const navigate = useNavigate();
+  const URL = "https://back-aprendeai.herokuapp.com"
   const [themes, setThemes] = useState([]);
   const [userMenu, setUserMenu] = useState(false);
 
   const user_id = sessionStorage.user;
-  const token = sessionStorage.token;
 
   useEffect(() => {
     axios.get(`${URL}/categories`, {headers: {'user': user_id}})
@@ -28,16 +30,6 @@ export default function HomePage() {
   function logout(){
     sessionStorage.removeItem('user')
     sessionStorage.removeItem('token')
-  }
-
-  function sendTheme(id){
-    if(!user_id){
-      navigate("/");
-      return;
-    }
-    axios.post(`${URL}/categories`, {Id: id},{headers: {'user': user_id, 'token': token}})
-    .then((response) => {console.log(response)})
-    .catch((err) => {console.log(err)})
   }
 
   if(themes.length === 0){
@@ -60,7 +52,7 @@ export default function HomePage() {
                   key={theme._id} 
                   color={theme.color}
                   className="products" 
-                  onClick={() => sendTheme(theme._id)}
+                  onClick={() => {setCategorie(theme.name); navigate('/main')}}
                 >
                   <img src={theme.image} alt={theme.name}></img>
                   <h3>{theme.name}</h3>
@@ -72,3 +64,4 @@ export default function HomePage() {
     )
   }
 }
+

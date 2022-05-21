@@ -18,7 +18,7 @@ export default function SignIn() {
   async function submitForm(e) {
     e.preventDefault()
     setLoading(true)
-    const URI = "http://localhost:5000/sign-in"
+    const URI = "https://back-aprendeai.herokuapp.com/sign-in"
 
     const body = {
       email: e.target[0].value,
@@ -29,7 +29,7 @@ export default function SignIn() {
     .then((res) => {
       sessionStorage.setItem('user', res.data.user_id);
       sessionStorage.setItem('token', res.data.token);
-      navigate("/main")
+      navigate("/home")
     }) 
     .catch((e) => {
       setValid(false)

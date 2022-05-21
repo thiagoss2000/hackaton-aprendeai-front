@@ -13,16 +13,13 @@ export default function SignUp() {
     { type: "text", placeholder: "Name" },
     { type: "email", placeholder: "E-mail" },
     { type: "password", placeholder: "Password (6+ characters)" },
-    { type: "password", placeholder: "Confirm Password (6+ characters)" },
-    { type: "text", placeholder: "Address" },
-    { type: "number", placeholder: "Street Number" },
-    { type: "text", placeholder: "Complement" },
+    { type: "password", placeholder: "Confirm Password (6+ characters)" }
   ]
 
   function submitForm(e) {
     e.preventDefault()
     setLoading(true)
-    const URI = "http://localhost:5000/sign-up"
+    const URI = "https://back-aprendeai.herokuapp.com/sign-up"
 
     if (e.target[2].value !== e.target[3].value) {
       setValid(false)
@@ -34,12 +31,7 @@ export default function SignUp() {
       name: e.target[0].value,
       email: e.target[1].value,
       password: e.target[2].value,
-      confirmPassword: e.target[3].value,
-      address: e.target[4].value,
-      number: e.target[5].value,
-    }
-    if (e.target[6].value) {
-      body.complement = e.target[6].value
+      confirmPassword: e.target[3].value
     }
 
     const promisse = axios.post(URI, body)
@@ -71,7 +63,6 @@ export default function SignUp() {
               type={i.type === "password" && show ? "text" : i.type}
               placeholder={i.placeholder}
               minLength={i.type === "password" ? "6" : ""}
-              required={i.placeholder === "Complement" ? false : true}
             />
           )
         })}
