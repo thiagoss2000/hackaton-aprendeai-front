@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useContext } from "react";
-import { AuthProvider } from "./context";
+import { AuthContext } from "./context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -9,7 +10,7 @@ import userImg from "../icons/user.png"
 
 
 export default function HomePage() {
-  const { setCategorie} = useContext(AuthProvider);
+  const { setCategorie} = useContext(AuthContext);
 
   const navigate = useNavigate();
   const URL = "https://back-aprendeai.herokuapp.com"
