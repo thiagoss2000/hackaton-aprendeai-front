@@ -29,12 +29,12 @@ export default function MainPage() {
     sessionStorage.removeItem('token')
   }
 
-  function sendTheme(){
+  function sendTheme(id){
     if(!user_id){
       navigate("/");
       return;
     }
-    axios.post(`${URL}/purchase`, {headers: {'user': user_id, 'token': token}})
+    axios.post(`${URL}/categories`, {Id: id},{headers: {'user': user_id, 'token': token}})
     .then((response) => {console.log(response)})
     .catch((err) => {console.log(err)})
   }
@@ -57,7 +57,7 @@ export default function MainPage() {
               return(
                 <Theme 
                   key={theme._id} 
-                  color={'#252525'}
+                  color={theme.color}
                   className="products" 
                   onClick={() => sendTheme(theme._id)}
                 >
