@@ -1,5 +1,5 @@
 import MainPageContainer from "./style";
-import { Link, useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export default function MainPage() {
@@ -8,7 +8,7 @@ export default function MainPage() {
         <MainPageContainer>
             <div>
                 <header>Aprende Aí</header>
-                <Link className="link" to="/homepage"><button>Entrar</button></Link>
+                <Link className="link" to="/sign-in"><button>Entrar</button></Link>
             </div>
         </MainPageContainer>
     )

@@ -6,7 +6,7 @@ import { Main, Theme } from "../assets/mainStyled"
 
 import userImg from "../icons/user.png"
 
-export default function MainPage() {
+export default function HomePage() {
   const URL = "http://localhost:5000"
   const navigate = useNavigate();
   const [themes, setThemes] = useState([]);
