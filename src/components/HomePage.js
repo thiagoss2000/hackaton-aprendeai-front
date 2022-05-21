@@ -52,7 +52,7 @@ export default function HomePage() {
                   key={theme._id} 
                   color={theme.color}
                   className="products" 
-                  onClick={() => {setCategorie(theme.name); navigate('/main')}}
+                  onClick={() => {setCategorie(theme.name); navigate("/main")}}
                 >
                   <img src={theme.image} alt={theme.name}></img>
                   <h3>{theme.name}</h3>
