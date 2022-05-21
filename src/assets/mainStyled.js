@@ -77,6 +77,7 @@ h2 {
   justify-content: center;
   align-items: center;
   width: 80%;
+  height: calc(100vh - 60px);
 }
 @media (max-width: 1100px){
   .body{

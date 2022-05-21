@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 import { Main, Theme } from "../assets/mainStyled"
@@ -7,7 +7,7 @@ import { Main, Theme } from "../assets/mainStyled"
 import userImg from "../icons/user.png"
 
 export default function MainPage() {
-  const URL = "http://localhost:5000"
+  const URL = "https://back-aprendeai.herokuapp.com"
   const navigate = useNavigate();
   const [themes, setThemes] = useState([]);
   const [userMenu, setUserMenu] = useState(false);
@@ -16,10 +16,10 @@ export default function MainPage() {
   const token = sessionStorage.token;
 
   useEffect(() => {
-    axios.get(`${URL}/products`, {headers: {'user': user_id}})
+    axios.get(`${URL}/categories`, {headers: {'user': user_id}})
     .then((response) => {
-      console.log(response.data.products);
-      setThemes(response.data.products);
+      console.log(response.data);
+      setThemes(response.data);
     })
     .catch((err) => {console.log(err);})
   }, []);
@@ -56,10 +56,10 @@ export default function MainPage() {
           {themes.map((theme) => {
               return(
                 <Theme 
-                  key={theme.id} 
+                  key={theme._id} 
                   color={'#252525'}
                   className="products" 
-                  onClick={() => sendTheme(theme.id)}
+                  onClick={() => sendTheme(theme._id)}
                 >
                   <img src={theme.image} alt={theme.name}></img>
                   <h3>{theme.name}</h3>
